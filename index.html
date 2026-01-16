@@ -42,6 +42,24 @@
       border-bottom: 1px solid #dee2e6;
     }
 
+    .download-btn {
+      background: white;
+      color: #495057;
+      border: 2px solid rgba(255,0,0,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .download-btn:hover {
+      background: #BF0000;
+      color: white;
+      transform: translateY(-1px);
+    }
+
     .nav-btn {
       background: #007bff;
       color: white;
@@ -186,6 +204,9 @@
   <div class="container">
     <div class="header">
       <h1>BIO2316 Course Calendar</h1>
+      <button class="download-btn" onclick="downloadICS()">
+        Download Calendar
+        </button>
     </div>
 
     <div class="calendar-nav">
@@ -314,7 +335,64 @@
    //function updateCalendar() { 
    //--  selectedGroup = document.getElementById('groupSelect').value; ---
    // renderCalendar(); ---
- //} 
+ //}
+
+    function downloadICS() {
+
+//if (!selectedGroup) return; // Safety check
+
+  let icsContent = 
+    "BEGIN:VCALENDAR\n" +
+    "VERSION:2.0\n" +
+    "CALSCALE:GREGORIAN\n" +
+    "METHOD:PUBLISH\n" +
+    "PRODID:-//Your App//Calendar//EN\n";
+
+    // Filter sessions for selected group only
+  //const filteredSessions = sessionData.filter(event => 
+  //  event.group === 'All' || event.group === selectedGroup
+  //);
+
+  sessionData.forEach(event => {
+    // Check if time range exists
+    const hasRange = event.time.includes(" - ");
+    let start, end;
+
+    if (hasRange) {
+      // e.g. "09:00 - 12:00"
+      start = new Date(event.date + "T" + event.time.split(" - ")[0] + ":00");
+      end   = new Date(event.date + "T" + event.time.split(" - ")[1] + ":00");
+    } else {
+      // e.g. "16:00" (deadline) â instant event
+      start = new Date(event.date + "T" + event.time + ":00");
+      end = null;
+    }
+
+    function formatDate(d) {
+      return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    }
+
+    icsContent +=
+      "BEGIN:VEVENT\n" +
+      `UID:${event.date}-${event.lecture.replace(/\s+/g, "")}@${event.module}\n` +
+      `DTSTAMP:${formatDate(new Date())}\n` +
+      `DTSTART:${formatDate(start)}\n` +
+      (end ? `DTEND:${formatDate(end)}\n` : "") +   // only add DTEND if range
+      `SUMMARY:${event.lecture}\n` +
+      `DESCRIPTION:Week ${event.week} | ${event.format} | Staff: ${event.staff}\n` +
+      (event.location ? `LOCATION:${event.location}\n` : "") +
+      "END:VEVENT\n";
+  });
+
+  icsContent += "END:VCALENDAR";
+
+  // Create downloadable blob
+  const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "BIO2316-calendar.ics";
+  link.click();
+}
 
     function renderCalendar() {
   const calendar = document.getElementById('calendar');
