@@ -81,7 +81,7 @@
     /* Calendar grid */
     .calendar {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap: 1px;
       background: #dee2e6;
       margin: 20px;
@@ -105,6 +105,7 @@
       padding: 8px;
       position: relative;
       overflow: hidden;
+      min-width: 0;
     }
 
     .day:hover {
@@ -265,68 +266,68 @@
     // --- your original sessionData preserved exactly (unchanged) ---
     const sessionData = [
       // Week 18
-      {week: 18, date: '2026-01-12', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Module Introduction', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
-      {week: 18, date: '2026-01-14', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Brief: Species Portfolios & OSPEs', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
+      {week: 18, date: '2027-01-18', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Module Introduction', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
+      {week: 18, date: '2027-01-20', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Brief: Species Portfolios & OSPEs', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
       
       // Week 19
-      {week: 19, date: '2026-01-19', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Bioethics', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
-      {week: 19, date: '2026-01-21', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Experimental/Study Design', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
-      {week: 19, date: '2026-01-22', time: '09:00 - 11:00', location: 'MBC/TR1', day: 'T', lecture: 'GIS I', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
+      {week: 19, date: '2027-01-25', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Bioethics', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
+      {week: 19, date: '2027-01-27', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Experimental/Study Design', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
+      {week: 19, date: '2027-01-28', time: '09:00 - 11:00', location: 'MBC/01/023', day: 'T', lecture: 'GIS I', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
       
       // Week 20
-      {week: 20, date: '2026-01-26', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Botanical and Fungal Surveys', staff: 'GB', format: 'Lecture', module: 'BIO2316'},
-      {week: 20, date: '2026-01-28', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Microbial Surveillance', staff: 'JC', format: 'Lecture', module: 'BIO2316'},
+      {week: 20, date: '2027-02-01', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Botanical and Fungal Surveys', staff: 'GB', format: 'Lecture', module: 'BIO2316'},
+      {week: 20, date: '2027-02-03', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Microbial Surveillance', staff: 'JC', format: 'Lecture', module: 'BIO2316'},
+
+      //Week 21 - READING WEEK
       
-      // Week 21
-      {week: 21, date: '2026-02-02', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Terrestrial Invertebrates', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
-      {week: 21, date: '2026-02-04', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Aerial Invertebrates', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
-      {week: 21, date: '2026-02-05', time: '09:00 - 11:00', location: 'MBC/TR1', day: 'T', lecture: 'GIS II', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
-      
-      // Week 22 - READING WEEK
-      
+      // Week 22
+      {week: 22, date: '2027-02-15', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Terrestrial Invertebrates', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
+      {week: 22, date: '2027-02-17', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Aerial Invertebrates', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
+      {week: 22, date: '2027-02-18', time: '09:00 - 11:00', location: 'MBC/TR1', day: 'T', lecture: 'GIS II', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
+           
       // Week 23
-      {week: 23, date: '2026-02-16', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Aquatic Invertebrates', staff: 'RC', format: 'Lecture', module: 'BIO2316'},
-      {week: 23, date: '2026-02-18', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Brief: Posters', staff: 'RC', format: 'Lecture', module: 'BIO2316'},
-      {week: 23, date: '2026-02-19', time: '09:00 - 11:00', location: 'MBC/TR1', day: 'T', lecture: 'Statistics I', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
-      {week: 23, date: '2026-02-19', time: '16:00', location: '', day: 'T', lecture: 'SPECIES JOURNAL HAND IN', staff: '', format: 'Assessment', module: 'BIO2316'},
+      {week: 23, date: '2027-02-22', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Aquatic Invertebrates', staff: 'RC', format: 'Lecture', module: 'BIO2316'},
+      {week: 23, date: '2027-02-24', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Brief: Posters', staff: 'NMG', format: 'Lecture', module: 'BIO2316'},
+      {week: 23, date: '2027-02-18', time: '16:00', location: '', day: 'T', lecture: 'SPECIES JOURNAL HAND IN', staff: '', format: 'Assessment', module: 'BIO2316'},
       
-       //week 24
-      {week: 24, date: '2026-02-23', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Small Mammal Surveys', staff: 'MS', format: 'Lecture', module: 'BIO2316'},
-      {week: 24, date: '2026-02-25', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Large Mammal Surveys', staff: 'MS', format: 'Lecture', module: 'BIO2316'},
+      //week 24
+      {week: 24, date: '2027-03-01', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Small Mammal Surveys', staff: 'MS', format: 'Lecture', module: 'BIO2316'},
+      {week: 24, date: '2027-03-03', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Large Mammal Surveys', staff: 'MS', format: 'Lecture', module: 'BIO2316'},
+      {week: 24, date: '2027-03-04', time: '09:00 - 11:00', location: 'MBC/01/023', day: 'T', lecture: 'Statistics I', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
 
-            //Week 25
-      {week: 25, date: '2026-03-02', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Fish Surveys', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
-      {week: 25, date: '2026-03-04', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Bird Surveys', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
-      {week: 25, date: '2026-03-05', time: '09:00 - 11:00', location: 'MBC/TR1', day: 'T', lecture: 'Statistics II', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
-      
-            //week 26
-      {week: 26, date: '2026-03-09', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Estimating populations', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
-      {week: 26, date: '2026-03-11', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Monitoring Animal Behaviour', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
+      //Week 25
+      {week: 25, date: '2027-03-08', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Fish Surveys', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
+      {week: 25, date: '2027-03-10', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Bird Surveys', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
+           
+      //week 26
+      {week: 26, date: '2027-03-15', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Estimating populations', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
+      //{week: 26, date: '2027-03-17', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Monitoring Animal Behaviour', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
+      {week: 26, date: '2027-03-18', time: '09:00 - 11:00', location: 'MBC/01/023', day: 'T', lecture: 'Statistics II', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
+      {week: 26, date: '2027-03-20', time: '16:00', location: '', day: 'F', lecture: 'POSTER AND PEER ASSESSMENT HAND IN', staff: '', format: 'Assessment', module: 'BIO2316'},
 
-            //week 27
-      {week: 27, date: '2026-03-16', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Field Preparation Session', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
-      {week: 27, date: '2026-03-18', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Academic Writing', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
-      {week: 27, date: '2026-03-19', time: '09:00 - 11:00', location: 'MBC/TR1', day: 'T', lecture: 'Statistics III', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
-      {week: 27, date: '2026-03-20', time: '16:00', location: '', day: 'F', lecture: 'POSTER AND PEER ASSESSMENT HAND IN', staff: '', format: 'Assessment', module: 'BIO2316'},
-      {week: 27, date: '2026-03-21', time: '09:00 - 15:30', location: 'Off site', day: 'S', lecture: 'Field Visit', staff: 'Various', format: 'Field', module: 'BIO2316'},
+      //Week 27 - 28 = EASTER
+
+      //week 29
+      {week: 29, date: '2027-04-05', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Field Preparation Session', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
+      {week: 29, date: '2027-04-07', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Academic Writing', staff: 'NM', format: 'Lecture', module: 'BIO2316'},
+      {week: 29, date: '2027-04-08', time: '09:00 - 11:00', location: 'MBC/01/023', day: 'T', lecture: 'Statistics III', staff: 'NMG', format: 'Tutorial', module: 'BIO2316'},
+      {week: 29, date: '2027-04-10', time: '09:00 - 15:30', location: 'Off site', day: 'S', lecture: 'Field Visit', staff: 'Various', format: 'Field', module: 'BIO2316'},
+                 
+      //Week 30
+      {week: 30, date: '2027-04-12', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Managing Aquatic Systems', staff: 'AC', format: 'Lecture', module: 'BIO2316'},
+      {week: 30, date: '2027-04-14', time: '09:00 - 10:00', location: 'DKB/0G/327', day: 'W', lecture: 'Peatland Management', staff: 'GB', format: 'Lecture', module: 'BIO2316'},
             
-            //Week 28 - 30 = EASTER
-            
-            //Week 31
-      {week: 31, date: '2026-04-13', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Managing Aquatic Systems', staff: 'AC', format: 'Lecture', module: 'BIO2316'},
-      {week: 31, date: '2026-04-15', time: '09:00 - 10:00', location: 'DKB/01/028', day: 'W', lecture: 'Peatland Management', staff: 'GB', format: 'Lecture', module: 'BIO2316'},
-            
-            //Week 32
-      {week: 32, date: '2026-04-20', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Woodland Management', staff: 'GB', format: 'Lecture', module: 'BIO2316'},
-      {week: 32, date: '2026-04-23', time: '14:00 - 15:00', location: 'SBS Teaching Lab', day: 'T', lecture: 'OSPE', staff: 'NMG', format: 'Assessment', module: 'BIO2316'},
-      {week: 32, date: '2026-04-23', time: '15:00 - 18:00', location: 'SBS Teaching Lab', day: 'T', lecture: 'Practical Session', staff: 'NMG', format: 'Lab', module: 'BIO2316'},
+      //Week 31
+      {week: 31, date: '2027-04-19', time: '14:00 - 15:00', location: 'DKB/01/028', day: 'M', lecture: 'Woodland Management', staff: 'GB', format: 'Lecture', module: 'BIO2316'},
+      {week: 31, date: '2027-04-22', time: '14:00 - 15:00', location: 'SBS Teaching Lab', day: 'T', lecture: 'OSPE', staff: 'NMG', format: 'Assessment', module: 'BIO2316'},
+      {week: 31, date: '2027-04-22', time: '15:00 - 18:00', location: 'SBS Teaching Lab', day: 'T', lecture: 'Practical Session', staff: 'NMG', format: 'Lab', module: 'BIO2316'},
       
-      //Week 34
-      {week: 34, date: '2026-05-08', time: '16:00', location: '', day: 'F', lecture: 'FIELD REPORT HAND IN', staff: '', format: 'Assessment', module: 'BIO2316'},
+      //Week 33
+      {week: 33, date: '2027-05-07', time: '16:00', location: '', day: 'F', lecture: 'FIELD REPORT HAND IN', staff: '', format: 'Assessment', module: 'BIO2316'},
             ];
 
     // --- calendar state & helpers ---
-    let currentDate = new Date(2026, 0, 1); // Jan 2026
+    let currentDate = new Date(2027, 0, 1); // Jan 2027
    //-- let selectedGroup = ''; ---
 
     const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -365,7 +366,7 @@
     } else {
       // e.g. "16:00" (deadline) â instant event
       start = new Date(event.date + "T" + event.time + ":00");
-      end = null;
+      end = start;
     }
 
     function formatDate(d) {
@@ -377,8 +378,8 @@
       `UID:${event.date}-${event.lecture.replace(/\s+/g, "")}@${event.module}\n` +
       `DTSTAMP:${formatDate(new Date())}\n` +
       `DTSTART:${formatDate(start)}\n` +
-      (end ? `DTEND:${formatDate(end)}\n` : "") +   // only add DTEND if range
-      `SUMMARY:${event.lecture}\n` +
+      `DTEND:${formatDate(end)}\n` +
+      `SUMMARY:${event.module} - ${event.lecture}\n` +
       `DESCRIPTION:Week ${event.week} | ${event.format} | Staff: ${event.staff}\n` +
       (event.location ? `LOCATION:${event.location}\n` : "") +
       "END:VEVENT\n";
@@ -403,9 +404,9 @@
   
   // Disable/enable navigation buttons - Jan to May only
   document.querySelector('.nav-btn:first-child').disabled =
-    (year === 2026 && month === 0);  // Jan
+    (year === 2027 && month === 0);  // Jan
   document.querySelector('.nav-btn:last-child').disabled =
-    (year === 2026 && month === 4); // May
+    (year === 2027 && month === 4); // May
     
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -498,16 +499,16 @@
 
     // previous / next navigation - limit to Jan & May
     function previousMonth() {
-      if (currentDate.getFullYear() === 2026 && currentDate.getMonth() === 0) {
-    return; // already at Jan 2026 â do nothing
+      if (currentDate.getFullYear() === 2027 && currentDate.getMonth() === 0) {
+    return; // already at Jan 2027 â do nothing
   }
   currentDate.setMonth(currentDate.getMonth() - 1);
   renderCalendar();
     }
 
     function nextMonth() {
-  if (currentDate.getFullYear() === 2026 && currentDate.getMonth() === 4) {
-    return; // already at May 2026 â do nothing
+  if (currentDate.getFullYear() === 2027 && currentDate.getMonth() === 4) {
+    return; // already at May 2027 â do nothing
   }
   currentDate.setMonth(currentDate.getMonth() + 1);
   renderCalendar();
